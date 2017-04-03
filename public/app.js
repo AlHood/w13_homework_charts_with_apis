@@ -2,11 +2,27 @@ var app = function(){
 
   new ColumnChart();
 
-  var url = "https://api.spotify.com/v1/search?q=christmas&type=album";
-    makeRequest(url, requestSpotify);
+  // var url = "https://api.spotify.com/v1/search?q=christmas&type=album";
 
+    var button = document.querySelector('#search-button');
+
+    button.onclick = performSearch;
 
 }
+
+
+var performSearch = function() {
+var searchQuery = document.querySelector('#search-query');
+console.log(searchQuery.value)
+  // var url = "https://api.spotify.com/v1/search?q=christmas&type=album";
+  var url = "https://api.spotify.com/v1/search?q=" + searchQuery.value + "&type=album";
+
+  makeRequest(url, requestSpotify);
+}
+
+
+
+
 
 var makeRequest = function(url, callback) {
 // create a new xml http request object
@@ -31,18 +47,17 @@ var requestSpotify = function() {
   var data = JSON.parse(jsonString);
   
   console.log(data);
-  console.log(data.albums.items)
+  // console.log(data.albums.items)
 
   populateSpotifyResult(data.albums.items);
+  // populateSpotifyResult(data);
 };
 
 var populateSpotifyResult = function(data) {
       var pTag = document.querySelector("#spotify-result");
 
       for(album of data) {
-        pTag.innerText += ("\n " + album.name)
-
-
+        pTag.innerText += ("\n Album Name: " + album.name + "    Main Artist: " + album.artists[0].name);
       }
 
 };

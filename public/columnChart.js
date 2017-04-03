@@ -4,18 +4,24 @@ var ColumnChart = function() {
   var chart = new Highcharts.Chart({
     chart: {
       type: 'column',
-      renderTo: container
+      renderTo: container,
+      plotBackgroundColor: '#ECE4B7',
+      borderColor: '#EBBA95',
+              borderWidth: 2,
+              plotShadow: true
+
+
     },
     title: {
-      text: "Quiche varieties"
+      text: "Alastair's preference for languages"
 
     },
     series: [{
-      name: "Cohort G1",
-      data: [1, 8, 1, 1, 5]
+      name: "Me",
+      data: [6.5, 9, 6, 2, 4]
     }],
     xAxis: {
-      categories: ['Ke$ha', 'Lorraine', 'Cheese & Onion', 'Ellen', 'HATRED FOR QUICHE']
+      categories: ['Ruby', 'Java', 'Javascript', 'Basic', 'French']
 
     },
     plotOptions: {
